@@ -77,7 +77,7 @@ class OrderViewModel : ViewModel() {
         // TODO: if _subtotal.value is not null subtract the previous entree price from the current
         //  subtotal value. This ensures that we only charge for the currently selected entree.
         if (_subtotal.value != null)
-            _subtotal.value!!.minus(previousEntreePrice)
+            _subtotal.value = (_subtotal.value)?.minus(previousEntreePrice)
 
         // TODO: set the current entree value to the menu item corresponding to the passed in string
         _entree.value = menuItems[entree]
@@ -97,7 +97,7 @@ class OrderViewModel : ViewModel() {
         // TODO: if _subtotal.value is not null subtract the previous side price from the current
         //  subtotal value. This ensures that we only charge for the currently selected side.
         if (_subtotal.value != null)
-            _subtotal.value!!.minus(previousSidePrice)
+            _subtotal.value = (_subtotal.value)?.minus(previousSidePrice)
 
         // TODO: set the current side value to the menu item corresponding to the passed in string
         _side.value = menuItems[side]
@@ -119,7 +119,7 @@ class OrderViewModel : ViewModel() {
         //  the current subtotal value. This ensures that we only charge for the currently selected
         //  accompaniment.
         if (_subtotal.value != null)
-            _subtotal.value!!.minus(previousAccompanimentPrice)
+            _subtotal.value = (_subtotal.value)?.minus(previousAccompanimentPrice)
 
         // TODO: set the current accompaniment value to the menu item corresponding to the passed in
         //  string
@@ -137,7 +137,7 @@ class OrderViewModel : ViewModel() {
         //  added item.
         //  Otherwise, set _subtotal.value to equal the price of the item.
         if (_subtotal.value != null)
-            _subtotal.value!!.plus(itemPrice)
+            _subtotal.value = (_subtotal.value)?.plus(itemPrice)
         else
             _subtotal.value = itemPrice
 
@@ -153,7 +153,7 @@ class OrderViewModel : ViewModel() {
         _tax.value = taxRate * (_subtotal.value!!)
 
         // TODO: set the total based on the subtotal and _tax.value.
-        _total.value = _subtotal.value!! + _tax.value!!
+        _total.value = (_subtotal.value)?.plus(_tax.value!!)
     }
 
     /**
